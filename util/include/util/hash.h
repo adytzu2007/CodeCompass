@@ -5,7 +5,7 @@
 #include <string>
 #include <sstream>
 
-#include <boost/uuid/sha1.hpp>
+#include <boost/compute/detail/sha1.hpp>
 
 namespace cc
 {

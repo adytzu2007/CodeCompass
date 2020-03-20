@@ -164,7 +164,7 @@ void GitServiceHandler::getRepositoryByProjectPath(
     ReferenceTopObjectResult top;
     getReferenceTopObject(top, repo.id, repo.head);
 
-    if (top.type != GitObjectType::GIT_OBJ_COMMIT) {
+    if (top.type != GitObjectType::CODECOMPASS_GIT_OBJECT_COMMIT) {
       LOG(warning) << "Head is not a commit";
       break;
     }

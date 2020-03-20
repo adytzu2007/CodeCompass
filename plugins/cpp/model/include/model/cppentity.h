@@ -1,6 +1,7 @@
 #ifndef CC_MODEL_CPPENTITY_H
 #define CC_MODEL_CPPENTITY_H
 
+#include <set>
 #include <string>
 
 #include <odb/nullable.hxx>

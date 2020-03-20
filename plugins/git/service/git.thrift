@@ -2,14 +2,14 @@ namespace cpp cc.service.git
 
 enum GitObjectType
 {
-  GIT_OBJ__EXT1 = 0,      /**< Reserved for future use. */
-  GIT_OBJ_COMMIT = 1,     /**< A commit object. */
-  GIT_OBJ_TREE = 2,       /**< A tree (directory listing) object. */
-  GIT_OBJ_BLOB = 3,       /**< A file revision object. */
-  GIT_OBJ_TAG = 4,        /**< An annotated tag object. */
-  GIT_OBJ__EXT2 = 5,      /**< Reserved for future use. */
-  GIT_OBJ_OFS_DELTA = 6,  /**< A delta, base is given by an offset. */
-  GIT_OBJ_REF_DELTA = 7,  /**< A delta, base is given by object id. */
+  CODECOMPASS_GIT_OBJ__EXT1 = 0,        /**< Deprecated. */
+  CODECOMPASS_GIT_OBJECT_COMMIT = 1,    /**< A commit object. */
+  CODECOMPASS_GIT_OBJECT_TREE = 2,      /**< A tree (directory listing) object. */
+  CODECOMPASS_GIT_OBJECT_BLOB = 3,      /**< A file revision object. */
+  CODECOMPASS_GIT_OBJECT_TAG = 4,       /**< An annotated tag object. */
+  CODECOMPASS_GIT_OBJ__EXT2 = 5,        /**< Deprecated. */
+  CODECOMPASS_GIT_OBJECT_OFS_DELTA = 6, /**< A delta, base is given by an offset. */
+  CODECOMPASS_GIT_OBJECT_REF_DELTA = 7, /**< A delta, base is given by object id. */
 }
 
 struct GitSignature

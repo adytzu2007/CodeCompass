@@ -35,6 +35,7 @@ namespace reparse
 using namespace cc::service;
 using namespace clang;
 using namespace clang::tooling;
+using namespace llvm;
 
 CppReparser::CppReparser(
   std::shared_ptr<odb::database> db_,

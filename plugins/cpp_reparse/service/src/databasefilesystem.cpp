@@ -14,7 +14,7 @@
 #include "databasefilesystem.h"
 
 using namespace llvm;
-using namespace clang::vfs;
+using namespace llvm::vfs;
 
 namespace
 {
@@ -91,7 +91,7 @@ Status fileToStatus(
  * A Clang VFS directory iterator over the children of a directory that is
  * stored in the database.
  */
-class DatabaseDirectoryIterator : public clang::vfs::detail::DirIterImpl
+class DatabaseDirectoryIterator : public llvm::vfs::detail::DirIterImpl
 {
 public:
   DatabaseDirectoryIterator(odb::database& db_,
@@ -118,11 +118,12 @@ public:
   {
     if (_remainingEntries.empty())
     {
-      CurrentEntry = Status();
+      CurrentEntry = directory_entry();
       return std::error_code(ENOENT, std::generic_category());
     }
 
-    CurrentEntry = fileToStatus(_db, *_remainingEntries.front());
+    auto status = fileToStatus(_db, *_remainingEntries.front());
+    CurrentEntry = directory_entry(status.getName(), status.getType());
     _remainingEntries.pop_front();
     return std::error_code();
   }
@@ -244,8 +245,8 @@ std::error_code
 DatabaseFileSystem::setCurrentWorkingDirectory(const Twine& path_)
 {
   SmallString<128> path(path_.str());
-  std::error_code error = sys::fs::make_absolute(_currentWorkingDirectory,
-                                                 path);
+  sys::fs::make_absolute(_currentWorkingDirectory, path);
+  std::error_code error = sys::fs::make_absolute(path);
 
   if (!error)
     _currentWorkingDirectory = path.str().str();
